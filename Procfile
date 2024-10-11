@@ -1,1 +1,1 @@
-web: java -Xms150M -jar target/esimstore-1.0.2-RELEASE.jar -Dserver.port=9001
+web: java -Xms150M -jar target/esimstore-1.0.2-RELEASE.jar

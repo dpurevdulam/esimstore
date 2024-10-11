@@ -1,1 +1,1 @@
-web: java -jar target/esimstore-0.0.1-SNAPSHOT.jar
+web: java -jar target/esimstore-1.0.2-RELEASE.jar

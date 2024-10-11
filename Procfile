@@ -1,1 +1,1 @@
-web: java -Xms150M -jar target/esimstore-1.0.2-RELEASE.jar --host 0.0.0.0 
+web: java -jar target/esimstore-1.0.2-RELEASE.jar

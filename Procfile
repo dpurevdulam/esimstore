@@ -1,1 +1,1 @@
-web: java -jar target/esimstore-1.0.2-RELEASE.jar
+web: java -Xms300M -jar target/esimstore-1.0.2-RELEASE.jar

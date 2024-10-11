@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/esimstore-1.0.2-RELEASE.jar com.mn.esimstore.EsimstoreApplication
+web: java $JAVA_OPTS -cp target/esimstore-1.0.2-RELEASE.jar src.main.java.com.mn.esimstore.EsimstoreApplication

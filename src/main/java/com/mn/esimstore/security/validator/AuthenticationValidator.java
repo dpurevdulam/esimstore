@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mn.esimstore.component.EsimStoreProperties;
 import com.mn.esimstore.security.exception.SecurityException;
 import com.mn.esimstore.security.jwt.JwtTokenValidator;
 import com.mn.esimstore.security.user.SecurityUser;
@@ -14,6 +16,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Component
 public class AuthenticationValidator {
+    @Autowired
+    private EsimStoreProperties esimStoreProperties;
     private final List<TokenValidator> validators;
 
     public AuthenticationValidator() {
@@ -45,7 +49,7 @@ public class AuthenticationValidator {
         if (validator == null)
             throw new SecurityException("Not supported token");
 
-        final SecurityUser user = validator.validate(token, "secret");
+        final SecurityUser user = validator.validate(token, esimStoreProperties.getJwtSecret());
         if (user.getClaims().get("aud") == null)
             throw new SecurityException("Audience not found");
 
@@ -58,7 +62,7 @@ public class AuthenticationValidator {
             audiences = Arrays.asList(user.getAudience().toLowerCase().split(","));
         }
         if (audiences == null || audiences.size() == 0
-                || !audiences.contains("esimstore")) {
+                || !audiences.contains(esimStoreProperties.getApplication())) {
             throw new SecurityException("Forbidden token");
         }
         return user;

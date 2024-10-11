@@ -1,2 +1,5 @@
 server:
   port: 9001
+config:
+  application: "esimstore"
+  jwtSecret: "cHJvZHVjdGJ5cHVkdQ=="
